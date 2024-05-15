@@ -120,7 +120,7 @@ in {
     vim
     sops
     pop-launcher
-  ]) ++ (with pkgs.gnomeExtensions; [ pop-shell ]);
+  ]) ++ (with pkgs.gnomeExtensions; [ pop-shell clipboard-indicator ]);
 
   # exclude specific gnome packages
   environment.gnome.excludePackages = (with pkgs; [

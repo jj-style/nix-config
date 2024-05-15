@@ -24,6 +24,7 @@ in {
     ../packages/alacritty/alacritty.nix
     ../packages/starship/starship.nix
     ../packages/direnv/direnv.nix
+    ../packages/vscode/vscode.nix
     ./gnome.nix
 
   ];
@@ -104,7 +105,6 @@ in {
     thunderbird
     bitwarden
     bitwarden-cli
-    vscodium
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))

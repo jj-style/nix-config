@@ -109,6 +109,7 @@
         enabled-extensions = [
           "pop-shell@system76.com"
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
+          "clipboard-indicator@tudmotu.com"
         ];
       };
 
