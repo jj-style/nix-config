@@ -1,0 +1,17 @@
+import:
+- ~/.nix-profile/gruvbox_dark.yaml
+
+window:
+  opacity: 0.8
+  padding.x: 10
+  padding.y: 0
+
+  decorations: "Full"
+  decorations_theme_variant: "Dark"
+
+font:
+  size: 10
+  normal.family: "Fira Code Nerd Font Mono"
+  bold.family: "Fira Code Nerd Font Mono"
+  italic.family: "Fira Code Nerd Font Mono"
+  bold_italic.family: "Fira Code Nerd Font Mono"

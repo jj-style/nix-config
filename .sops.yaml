@@ -1,0 +1,11 @@
+keys:
+  users:
+    - &jj age1spnpykk9qxf28qltfyevq2scvjhe3jtcr98pneps88uul37fgs0sjtnyk2
+  systems:
+    - &nixos age1qlvrrh5rg9ys79z9tq0fjgm3r9km8hzvt65mj8qa27ezzqaeqpxq5qd0f6
+creation_rules:
+  - path_regex: .*secrets/secrets\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *jj
+      - *nixos
