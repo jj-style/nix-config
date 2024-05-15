@@ -23,6 +23,7 @@ in {
     ../packages/just/just.nix
     ../packages/alacritty/alacritty.nix
     ../packages/starship/starship.nix
+    ../packages/direnv/direnv.nix
     ./gnome.nix
 
   ];

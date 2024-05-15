@@ -7,6 +7,10 @@ _default:
 fmt:
     fd -e nix -X nixfmt {}
 
+# install pre-commit hooks
+hooks:
+    pre-commit install
+
 # rebuild system configuration for the given host 
 system hostname:
     sudo nixos-rebuild switch --flake .#{{hostname}}
