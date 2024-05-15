@@ -1,7 +1,5 @@
 { config, pkgs, ... }: {
-  home.packages = with pkgs; [
-    vscodium.fhs
-  ];
+  home.packages = with pkgs; [ vscodium.fhs ];
 
   xdg.configFile."VSCodium/User/settings.json".source = ./settings.json;
 

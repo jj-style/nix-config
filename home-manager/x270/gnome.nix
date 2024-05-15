@@ -1,4 +1,8 @@
 { config, lib, pkgs, ... }: {
+  home.packages = with pkgs;
+    [ pop-launcher ]
+    ++ (with pkgs.gnomeExtensions; [ pop-shell clipboard-indicator ]);
+
   # gnome dconf settings
   dconf = {
     enable = true;
