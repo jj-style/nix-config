@@ -1,11 +1,9 @@
-{ inputs, lib, config, pkgs, ... }:
-let
-in {
-  # ========== SYSTEMD ========== #
+{ inputs, lib, config, pkgs, ... }: {
   environment.etc = {
     "wallpapers/default.jpg".source = builtins.fetchurl {
-        url = "https://raw.githubusercontent.com/pop-os/wallpapers/03a25a14a76eaf3825b980ab50aad6698c1c5a35/original/jasper-van-der-meij-97274-edit.jpg";
-        sha256 = "sha256:10lcr3r9bs3j4s19wps2gkxr6ay7ly59aadkkdd0122x9kywk2r9";
+      url =
+        "https://raw.githubusercontent.com/pop-os/wallpapers/03a25a14a76eaf3825b980ab50aad6698c1c5a35/original/jasper-van-der-meij-97274-edit.jpg";
+      sha256 = "sha256:10lcr3r9bs3j4s19wps2gkxr6ay7ly59aadkkdd0122x9kywk2r9";
     };
   };
 
@@ -54,12 +52,12 @@ in {
       ExecStart = "-${
           pkgs.writeShellScript "reset-wallpaper" ''
             	#!/run/current-system/sw/bin/bash
-                    source /etc/set-environment
+              source /etc/set-environment
             	export DISPLAY=:0
             	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/`id -u jj`/bus
-                    for picUriMode in picture-uri picture-uri-dark; do
-                      ${pkgs.glib}/bin/gsettings set org.gnome.desktop.background $picUriMode 'file:///etc/wallpapers/default.jpg';
-                    done
+              for picUriMode in picture-uri picture-uri-dark; do
+                ${pkgs.glib}/bin/gsettings set org.gnome.desktop.background $picUriMode 'file:///etc/wallpapers/default.jpg';
+              done
           ''
         }";
     };
