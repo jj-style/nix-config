@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }: {
   home.packages = with pkgs;
-    [ pop-launcher ]
-    ++ (with pkgs.gnomeExtensions; [ pop-shell clipboard-indicator ]);
+    [ pop-launcher ] ++ (with pkgs.gnomeExtensions; [
+      pop-shell
+      clipboard-indicator
+      weather-or-not
+    ]);
 
   # gnome dconf settings
   dconf = {
@@ -114,6 +117,7 @@
           "pop-shell@system76.com"
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
           "clipboard-indicator@tudmotu.com"
+          "weatherornot@somepaulo.github.io"
         ];
       };
 
@@ -122,6 +126,9 @@
         tile-by-default = false;
         tile-enter = [ "<Shift><Super>Return" ];
       };
+
+      # weatherornot extension config
+      "org/gnome/shell/extensions/weatherornot" = { position = "right"; };
     };
   };
 }
