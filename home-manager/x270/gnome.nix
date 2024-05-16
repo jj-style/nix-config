@@ -4,6 +4,7 @@
       pop-shell
       clipboard-indicator
       weather-or-not
+      places-status-indicator
     ]);
 
   # gnome dconf settings
@@ -118,6 +119,7 @@
           "launch-new-instance@gnome-shell-extensions.gcampax.github.com"
           "clipboard-indicator@tudmotu.com"
           "weatherornot@somepaulo.github.io"
+          "places-menu@gnome-shell-extensions.gcampax.github.com"
         ];
       };
 
