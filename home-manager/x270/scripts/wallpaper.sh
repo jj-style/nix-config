@@ -17,7 +17,7 @@ current=${current%.jpg}
 
 # if current file name isn't just a number, then start at 0
 if [[ ! "$current" =~ ^[0-9]+$ ]]; then
-	current=0
+	current=-1
 fi
 
 echo "current $current"
