@@ -15,15 +15,8 @@ in {
 
     inputs.sops-nix.homeManagerModules.sops
 
-    ../packages/tmux/tmux.nix
-    ../packages/git/git.nix
-    ../packages/fzf/fzf.nix
-    ../packages/bash/bash.nix
-    ../packages/tree/tree.nix
-    ../packages/just/just.nix
+    ../packages/cli.nix
     ../packages/alacritty/alacritty.nix
-    ../packages/starship/starship.nix
-    ../packages/direnv/direnv.nix
     ../packages/vscode/vscode.nix
     ./gnome.nix
 
@@ -80,23 +73,7 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
-    # cli tools
-    vim
-    tmux
-    ranger
-    wget
-    fd
-    ripgrep
-    fzf
-    bat
-    delta
-    duf
-    dua
-    jq
-    alacritty
-    alacritty-theme
-    git
+    
     nixfmt
 
     # desktop apps
@@ -165,9 +142,6 @@ in {
     find = "fd";
     grep = "rg";
     diff = "delta";
-    hms = "home-manager switch";
-    hme = "$EDITOR $HOME/.config/home-manager/home.nix";
-    #tmux = "TERM=xterm-256color tmux";
   };
 
   # Enable home-manager

@@ -115,7 +115,7 @@ in {
   # ========== PACKAGES ========== #
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [ vim sops ]);
+  environment.systemPackages = (with pkgs; [ sops ]);
 
   # exclude specific gnome packages
   environment.gnome.excludePackages = (with pkgs; [
