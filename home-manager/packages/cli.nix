@@ -1,25 +1,15 @@
 { config, pkgs, ... }: {
-    imports = [
-    ../packages/vim/vim.nix
-    ../packages/tmux/tmux.nix
-    ../packages/git/git.nix
-    ../packages/fzf/fzf.nix
-    ../packages/bash/bash.nix
-    ../packages/tree/tree.nix
-    ../packages/just/just.nix
-    ../packages/starship/starship.nix
-    ../packages/direnv/direnv.nix
-    ];
+  imports = [
+    ./vim/vim.nix
+    ./tmux/tmux.nix
+    ./git/git.nix
+    ./fzf/fzf.nix
+    ./bash/bash.nix
+    ./tree/tree.nix
+    ./just/just.nix
+    ./starship/starship.nix
+    ./direnv/direnv.nix
+  ];
 
-    home.packages = with pkgs; [
-        ranger
-        wget
-        fd
-        ripgrep
-        bat
-        delta
-        duf
-        dua
-        jq
-    ];
+  home.packages = with pkgs; [ ranger wget fd ripgrep bat delta duf dua jq ];
 }

@@ -16,8 +16,8 @@ in {
     inputs.sops-nix.homeManagerModules.sops
 
     ../packages/cli.nix
+    ../packages/dev.nix
     ../packages/alacritty/alacritty.nix
-    ../packages/vscode/vscode.nix
     ./gnome.nix
 
   ];
@@ -73,7 +73,7 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    
+
     nixfmt
 
     # desktop apps
@@ -82,6 +82,7 @@ in {
     thunderbird
     bitwarden
     bitwarden-cli
+    signal-desktop
     jellyfin-media-player
 
     (pkgs.writeShellScriptBin "wallpaper.sh"

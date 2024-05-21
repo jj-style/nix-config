@@ -15,6 +15,7 @@ in {
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./wallpaper.nix
+    ../common/tailscale/tailscale.nix
   ];
 
   nixpkgs = {
@@ -204,6 +205,11 @@ in {
   networking.wg-quick.interfaces.wg0.configFile =
     "${config.sops.secrets."wireguard_pvpn".path}";
   networking.enableIPv6 = false;
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   # ========== SYSTEM ========== #
   # auto-upgrade packages

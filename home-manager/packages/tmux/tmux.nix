@@ -23,18 +23,18 @@ in {
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.tmux-fzf
       tmuxPlugins.yank
-      {
-        plugin = tmuxPlugins.power-theme;
-        extraConfig = ''
-          set -g @tmux_power_theme 'moon'
-        '';
-      }
       #{
-      #  plugin = tmux-themepack;
+      #  plugin = tmuxPlugins.power-theme;
       #  extraConfig = ''
-      #  set -g @themepack 'powerline/default/cyan'
+      #    set -g @tmux_power_theme 'moon'
       #  '';
       #}
+      {
+        plugin = tmux-themepack;
+        extraConfig = ''
+        set -g @themepack 'powerline/default/purple'
+        '';
+      }
     ];
     shortcut = "a";
     extraConfig = ''
