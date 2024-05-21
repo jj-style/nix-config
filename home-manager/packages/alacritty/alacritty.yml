@@ -1,7 +1,5 @@
 import:
-#- ~/.nix-profile/gruvbox_dark.yaml
-- ~/.nix-profile/hardhacker.yaml
-#- ~/.nix-profile/snazzy.yaml
+- ~/.nix-profile/snazzy.yaml
 
 window:
   opacity: 0.8
