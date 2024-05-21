@@ -82,6 +82,7 @@ in {
     thunderbird
     bitwarden
     bitwarden-cli
+    jellyfin-media-player
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))
