@@ -23,6 +23,11 @@
         toolkit-accessibility = true;
       };
 
+      # night light
+      "org/gnome/settings-daemon/plugins/color" = {
+        night-light-enabled = true;
+      };
+
       #favorite-apps = ["firefox.desktop"];
 
       # custom gnome keyboard shortcuts
