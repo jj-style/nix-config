@@ -84,6 +84,7 @@ in {
     bitwarden-cli
     signal-desktop
     jellyfin-media-player
+    vlc
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))
