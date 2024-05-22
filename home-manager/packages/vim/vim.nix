@@ -7,6 +7,8 @@
       vim-fugitive
       fzf-vim
       vim-lastplace
+      nerdcommenter
+      nerdtree
     ];
     settings = {
       ignorecase = true;
@@ -28,6 +30,9 @@
       " set leader to ,
       let mapleader=","
 
+      " enable filetype plugin
+      filetype plugin on
+
       " clear highlighting
       nnoremap <silent> <leader><space> :nohlsearch<CR>
 
@@ -43,10 +48,13 @@
       " search for files
       nmap <leader>f :Files<CR>
 
-
       " vim-airline
       let g:airline_theme = 'violet'
       let g:airline_powerline_fonts=1
+
+      " nerdtree
+      nnoremap <leader>nt :NERDTreeToggle<CR>
+      nnoremap <leader>ntf :NERDTreeFind<CR>
     '';
   };
 }
