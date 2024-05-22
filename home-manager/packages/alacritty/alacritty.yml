@@ -1,5 +1,7 @@
 import:
-- ~/.nix-profile/snazzy.yaml
+- ~/.nix-profile/monokai_charcoal.yaml
+#- ~/.nix-profile/hyper.yaml
+#- ~/.nix-profile/alabaster_dark.yaml
 
 window:
   opacity: 0.8
