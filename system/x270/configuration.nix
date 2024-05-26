@@ -191,6 +191,7 @@ in {
     age.generateKey = true;
     secrets = {
       "wireguard_pvpn" = { restartUnits = [ "wg-quick-wg0.service" ]; };
+      "pvpn_f1" = {};
     };
   };
 
@@ -199,17 +200,21 @@ in {
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   networking.firewall.allowedUDPPorts = [ 51820 ];
-  networking.firewall.trustedInterfaces = [ "wg0" ];
+  networking.firewall.trustedInterfaces = [ "wg0" "wgf1" ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
   networking.wg-quick.interfaces.wg0.configFile =
     "${config.sops.secrets."wireguard_pvpn".path}";
+  networking.wg-quick.interfaces.wgf1.configFile =
+    "${config.sops.secrets."pvpn_f1".path}";
   networking.enableIPv6 = false;
 
   services.avahi = {
     enable = true;
     nssmdns = true;
   };
+
+  systemd.services.wg-quick-wgf1.wantedBy = lib.mkForce [];
 
   # ========== SYSTEM ========== #
   # auto-upgrade packages
