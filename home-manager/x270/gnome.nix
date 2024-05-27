@@ -30,8 +30,6 @@
         night-light-temperature = lib.hm.gvariant.mkUint32 3300;
       };
 
-      #favorite-apps = ["firefox.desktop"];
-
       # custom gnome keyboard shortcuts
       "org/gnome/desktop/wm/keybindings" = {
         close = [ "<Shift><Super>q" ];
@@ -120,6 +118,14 @@
 
       # enable gnome extensions
       "org/gnome/shell" = {
+        favorite-apps = [
+          "firefox.desktop"
+          "Alacritty.desktop"
+          "org.gnome.Nautilus.desktop"
+          "codium.desktop"
+          "signal-desktop.desktop"
+        ];
+
         disabled-user-extensions = false;
         enabled-extensions = [
           "pop-shell@system76.com"
