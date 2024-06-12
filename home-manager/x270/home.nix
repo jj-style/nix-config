@@ -74,7 +74,7 @@ in {
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    nixfmt
+    nixfmt-classic
 
     # desktop apps
     firefox
@@ -85,6 +85,7 @@ in {
     signal-desktop
     jellyfin-media-player
     vlc
+    shotwell
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))

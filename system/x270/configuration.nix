@@ -139,15 +139,15 @@ in {
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "gb";
-    xkbVariant = "";
+    variant = "";
   };
   # Configure console keymap
   console.keyMap = "uk";
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -211,7 +211,7 @@ in {
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
 
   systemd.services.wg-quick-wgf1.wantedBy = lib.mkForce [];
