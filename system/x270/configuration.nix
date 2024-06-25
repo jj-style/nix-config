@@ -88,6 +88,11 @@ in {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Enable networking
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false; 
+
+  # services.resolved = {
+  #   enable = true;
+  # };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -116,7 +121,7 @@ in {
   # ========== PACKAGES ========== #
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [ sops ]);
+  environment.systemPackages = (with pkgs; [ sops wireguard-tools protonvpn-cli_2 ]);
 
   # exclude specific gnome packages
   environment.gnome.excludePackages = (with pkgs; [
@@ -179,6 +184,28 @@ in {
     packages = with pkgs; [ ];
   };
 
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "${pkgs.protonvpn-cli_2}/bin/protonvpn";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/protonvpn";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+      groups = [ "wheel" ];
+    }];
+    extraConfig = with pkgs; ''
+      Defaults:picloud secure_path="${lib.makeBinPath [
+        protonvpn-cli_2
+      ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+    '';
+  };
+
   # ========== SOPS ========== #
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
@@ -190,8 +217,8 @@ in {
     # This will generate a new key if the key specified above does not exist
     age.generateKey = true;
     secrets = {
-      "wireguard_pvpn" = { restartUnits = [ "wg-quick-wg0.service" ]; };
-      "pvpn_f1" = {};
+      "wireguard_pvpn" = { path = "/etc/wireguard/wg0.conf"; };
+      "pvpn_f1" = { path = "/etc/wireguard/wgf1.conf"; };
     };
   };
 
@@ -203,18 +230,13 @@ in {
   networking.firewall.trustedInterfaces = [ "wg0" "wgf1" ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
-  networking.wg-quick.interfaces.wg0.configFile =
-    "${config.sops.secrets."wireguard_pvpn".path}";
-  networking.wg-quick.interfaces.wgf1.configFile =
-    "${config.sops.secrets."pvpn_f1".path}";
+
   networking.enableIPv6 = false;
 
   services.avahi = {
     enable = true;
     nssmdns4 = true;
   };
-
-  systemd.services.wg-quick-wgf1.wantedBy = lib.mkForce [];
 
   # ========== SYSTEM ========== #
   # auto-upgrade packages
