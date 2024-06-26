@@ -86,6 +86,7 @@ in {
     jellyfin-media-player
     vlc
     shotwell
+    newsflash
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))

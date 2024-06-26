@@ -16,6 +16,7 @@ in {
     ./hardware-configuration.nix
     ./wallpaper.nix
     ../common/tailscale/tailscale.nix
+    ../common/docker/docker.nix
   ];
 
   nixpkgs = {
@@ -266,5 +267,10 @@ in {
       # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
+  };
+
+  services.docker = {
+    enable = true;
+    dockerUsers = [ "jj" ];
   };
 }
