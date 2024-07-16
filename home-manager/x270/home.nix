@@ -18,6 +18,7 @@ in {
     ../packages/cli.nix
     ../packages/dev.nix
     ../packages/alacritty/alacritty.nix
+    ../packages/syncthing/syncthing.nix
     ./gnome.nix
 
   ];
@@ -87,6 +88,7 @@ in {
     vlc
     shotwell
     newsflash
+    obsidian
 
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))
