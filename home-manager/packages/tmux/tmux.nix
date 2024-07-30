@@ -32,7 +32,7 @@ in {
       {
         plugin = tmux-themepack;
         extraConfig = ''
-        set -g @themepack 'powerline/default/purple'
+          set -g @themepack 'powerline/default/purple'
         '';
       }
     ];

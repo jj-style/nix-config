@@ -1,5 +1,5 @@
 { lib, pkgs, config, ... }:
-with lib;                      
+with lib;
 let
   # Shorter name to access final settings a 
   # user of docker.nix module HAS ACTUALLY SET.
@@ -11,7 +11,7 @@ in {
     enable = mkEnableOption "docker service";
     dockerUsers = mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
     };
   };
 

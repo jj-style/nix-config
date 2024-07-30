@@ -90,6 +90,8 @@ in {
     newsflash
     obsidian
 
+    pkgs.unstable.protonmail-desktop
+
     (pkgs.writeShellScriptBin "wallpaper.sh"
       (builtins.readFile scripts/wallpaper.sh))
   ];

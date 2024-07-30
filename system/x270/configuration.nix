@@ -89,7 +89,7 @@ in {
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Enable networking
   networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = false; 
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # services.resolved = {
   #   enable = true;
@@ -122,7 +122,8 @@ in {
   # ========== PACKAGES ========== #
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = (with pkgs; [ sops wireguard-tools protonvpn-cli_2 ]);
+  environment.systemPackages =
+    (with pkgs; [ sops wireguard-tools protonvpn-cli_2 ]);
 
   # exclude specific gnome packages
   environment.gnome.excludePackages = (with pkgs; [
@@ -201,9 +202,9 @@ in {
       groups = [ "wheel" ];
     }];
     extraConfig = with pkgs; ''
-      Defaults:picloud secure_path="${lib.makeBinPath [
-        protonvpn-cli_2
-      ]}:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+      Defaults:picloud secure_path="${
+        lib.makeBinPath [ protonvpn-cli_2 ]
+      }:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
     '';
   };
 

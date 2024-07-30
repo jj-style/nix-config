@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
@@ -14,12 +15,25 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs:
+  outputs =
+    { self, nixpkgs, home-manager, sops-nix, nixpkgs-unstable, ... }@inputs:
     let
       inherit (self) outputs;
 
       timeZone = "Europe/London";
       locale = "en_GB.UTF-8";
+      unstable-overlays = {
+        nixpkgs.overlays = [
+          (final: prev: {
+            unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+            # <-- use this variant instead if unfree packages are needed: -->
+            # unstable = import nixpkgs-unstable {
+            #   inherit system;
+            #   config.allowUnfree = true;
+            # };
+          })
+        ];
+      };
     in {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -42,7 +56,7 @@
           # `inherit` is used to pass the variables set in the above "let" statement into our home.nix file below
           extraSpecialArgs = { inherit inputs outputs; };
           # > Our main home-manager configuration file <
-          modules = [ ./home-manager/x270/home.nix ];
+          modules = [ ./home-manager/x270/home.nix unstable-overlays ];
         };
       };
     };

@@ -11,5 +11,16 @@
     ./direnv/direnv.nix
   ];
 
-  home.packages = with pkgs; [ ranger wget fd ripgrep bat delta duf dua jq tealdeer];
+  home.packages = with pkgs; [
+    ranger
+    wget
+    fd
+    ripgrep
+    bat
+    delta
+    duf
+    dua
+    jq
+    tealdeer
+  ];
 }
