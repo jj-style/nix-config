@@ -151,6 +151,7 @@ in {
     find = "fd";
     grep = "rg";
     diff = "delta";
+    flac2mp3 = "fd . -e flac -x ffmpeg -i {} -ab 320k -map_metadata 0 -id3v2_version 3 {.}.mp3";
   };
 
   # Enable home-manager
