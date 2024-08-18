@@ -43,7 +43,7 @@
       # otherwise authenticate with tailscale
       ${tailscale}/bin/tailscale up -authkey $(cat ${
         config.sops.secrets."tailscale_authkey".path
-      })
+      }) --reset
     '';
   };
 }
