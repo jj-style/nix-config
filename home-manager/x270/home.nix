@@ -89,6 +89,7 @@ in {
     shotwell
     newsflash
     obsidian
+    localsend
     minizincide
 
     pkgs.unstable.protonmail-desktop

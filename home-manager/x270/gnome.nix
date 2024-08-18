@@ -5,6 +5,7 @@
       clipboard-indicator
       weather-or-not
       places-status-indicator
+      caffeine
     ]);
 
   # gnome dconf settings
@@ -133,6 +134,7 @@
           "clipboard-indicator@tudmotu.com"
           "weatherornot@somepaulo.github.io"
           "places-menu@gnome-shell-extensions.gcampax.github.com"
+          "caffeine@patapon.info"
         ];
       };
 
