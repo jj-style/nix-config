@@ -274,4 +274,6 @@ in {
     enable = true;
     dockerUsers = [ "jj" ];
   };
+
+  services.flatpak.enable = true;
 }
