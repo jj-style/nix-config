@@ -123,7 +123,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages =
-    (with pkgs; [ sops wireguard-tools protonvpn-cli_2 ]);
+    (with pkgs; [ sops wireguard-tools protonvpn-cli_2 protonvpn-gui ]);
 
   # exclude specific gnome packages
   environment.gnome.excludePackages = (with pkgs; [
