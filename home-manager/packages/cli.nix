@@ -7,6 +7,7 @@
     ./bash/bash.nix
     ./tree/tree.nix
     ./just/just.nix
+    ./make/make.nix
     ./starship/starship.nix
     ./direnv/direnv.nix
   ];
