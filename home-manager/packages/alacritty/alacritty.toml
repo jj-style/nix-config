@@ -12,3 +12,7 @@ decorations = "Full"
 decorations_theme_variant = "Dark"
 opacity = 0.8
 padding = { x = 10, y = 10 }
+
+[scrolling]
+history = 1000
+multiplier = 3
