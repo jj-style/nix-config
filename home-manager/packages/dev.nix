@@ -9,6 +9,8 @@
     python312
     python312Packages.jedi
     python312Packages.jedi-language-server
+    pre-commit
+    convco
   ];
 
   programs.bash.initExtra = ''
