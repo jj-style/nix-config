@@ -61,6 +61,8 @@ in {
     # # fonts?
     fontconfig
     powerline-fonts
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -69,7 +71,6 @@ in {
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    nixfmt-classic
     figurine
   ];
 
