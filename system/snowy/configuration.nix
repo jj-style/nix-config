@@ -71,7 +71,6 @@ in {
       fsType = "btrfs";
     };
   };
-  sops.secrets."luks" = {};
   environment.etc."crypttab".text = ''
     backups /dev/disk/by-uuid/6744429e-ad79-4fc8-8750-d7b0bfd64a99 ${config.sops.secrets."luks".path}
   '';
@@ -162,6 +161,7 @@ in {
         neededForUsers = true;
       };
       "tailscale_authkey" = {};
+      "luks" = {};
     };
   };
 
