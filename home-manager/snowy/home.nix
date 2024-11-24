@@ -16,6 +16,7 @@ in {
     inputs.sops-nix.homeManagerModules.sops
 
     ../packages/cli.nix
+    ../packages/figurine/figurine.nix
   ];
 
   nixpkgs = {
@@ -70,8 +71,6 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
-    figurine
   ];
 
   # required to autoload fonts from packages installed via Home Manager
@@ -125,14 +124,6 @@ in {
 
   # Set shell aliases
   home.shellAliases = {
-  };
-
-  programs.bash = {
-      enable = true;
-      profileExtra =
-        ''
-        figurine -f Standard.flf `cat /etc/hostname`
-        '';
   };
 
   # Enable home-manager
