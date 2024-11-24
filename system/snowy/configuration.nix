@@ -60,7 +60,7 @@ in {
   # ========== BOOT ========== #
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5002538da028ebc6";
   boot.loader.grub.useOSProber = true;
   boot.kernelParams = [ "quiet" "splash" "ipv6.disable=1" ];
 
@@ -209,14 +209,16 @@ in {
 
   # ========== SERVICES ========== #
 
-  services.flatpak.enable = false;
-
   services.mynix = {
     enable = true;
     enableGc = true;
     enableAutoUpgrade = true;
   };
 
+  services.tailscale = {
+    enable = true;
+    extraArgs = "--ssh";
+  };
 
   # ========== RSNAPSHOT ========== #
   # services.rsnapshot = {
