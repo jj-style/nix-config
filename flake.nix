@@ -68,6 +68,15 @@
           # > Our main home-manager configuration file <
           modules = [ ./home-manager/x270/home.nix unstable-overlays ];
         };
+        
+        "jj@snowy" = home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          # `inherit` is used to pass the variables set in the above "let" statement into our home.nix file below
+          extraSpecialArgs = { inherit inputs outputs; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/snowy/home.nix unstable-overlays ];
+        };
       };
     };
 }
