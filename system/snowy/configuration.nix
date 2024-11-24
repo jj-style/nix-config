@@ -16,7 +16,6 @@ in {
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ../common/nix/mynix.nix
-    ../common/tailscale/tailscale.nix
   ];
 
   nixpkgs = {
@@ -66,10 +65,16 @@ in {
 
   # ========== FILESYSTEM ========== #
 
-  # sops.secrets."luks" = {};
-  # environment.etc."crypttab".text = ''
-  #   backups /dev/disk/by-uuid/6744429e-ad79-4fc8-8750-d7b0bfd64a99 ${config.sops.secrets."luks".path}
-  # '';
+  fileSystems = {
+    "/mnt/backups" = {
+      device = "/dev/mapper/backups";
+      fsType = "btrfs";
+    };
+  };
+  sops.secrets."luks" = {};
+  environment.etc."crypttab".text = ''
+    backups /dev/disk/by-uuid/6744429e-ad79-4fc8-8750-d7b0bfd64a99 ${config.sops.secrets."luks".path}
+  '';
 
   # ========== TIME LOCALE ========== #
 
