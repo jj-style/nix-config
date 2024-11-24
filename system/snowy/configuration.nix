@@ -223,18 +223,18 @@ in {
 
 
   # ========== RSNAPSHOT ========== #
-  # services.rsnapshot = {
-  #   enable = true;
-  #   extraConfig = ''
-  #     snapshot_root	/mnt/backups/docker-data
-  #     #retain	hourly	24
-  #     retain	daily	7
-  #     retain	weekly	4
-  #     retain	monthly	12
-  #     backup	root@wilson:/home/jj/docker-data	wilson/
-  #   '';
-  #   cronIntervals = {
-  #     daily = "50 21 * * *";
-  #   };
-  # };
+  services.rsnapshot = {
+    enable = true;
+    extraConfig = ''
+      snapshot_root	/mnt/backups/docker-data
+      #retain	hourly	24
+      retain	daily	7
+      retain	weekly	4
+      retain	monthly	12
+      backup	jj@wilson:/home/jj/docker-data	wilson/
+    '';
+    cronIntervals = {
+      daily = "50 21 * * *";
+    };
+  };
 }
