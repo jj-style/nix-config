@@ -156,6 +156,7 @@ in {
       "passwd" = {
         neededForUsers = true;
       };
+      "tailscale_authkey" = {};
     };
   };
 
@@ -208,13 +209,11 @@ in {
   };
 
   # ========== SERVICES ========== #
-
-  services.flatpak.enable = false;
-
-  services.mynix = {
+  services.tailscale = {
     enable = true;
-    enableGc = true;
-    enableAutoUpgrade = true;
+    openFirewall = true;
+    authKeyFile = "${config.sops.secrets."tailscale_authkey".path}";
+    extraUpFlags = ["--ssh"];
   };
 
 
