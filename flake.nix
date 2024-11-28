@@ -38,12 +38,22 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
+        # thinkpad x270 nixos
         nixos = nixpkgs.lib.nixosSystem {
           # `inherit` is used to pass the variables set in the above "let" statement into our configuration.nix file below
           specialArgs = { inherit inputs outputs timeZone locale; };
           # > Our main nixos configuration file <
           modules =
             [ ./system/x270/configuration.nix sops-nix.nixosModules.sops ];
+        };
+        
+        # snowy intel nuc
+        snowy = nixpkgs.lib.nixosSystem {
+          # `inherit` is used to pass the variables set in the above "let" statement into our configuration.nix file below
+          specialArgs = { inherit inputs outputs timeZone locale; };
+          # > Our main nixos configuration file <
+          modules =
+            [ ./system/snowy/configuration.nix sops-nix.nixosModules.sops ];
         };
       };
 
@@ -57,6 +67,15 @@
           extraSpecialArgs = { inherit inputs outputs; };
           # > Our main home-manager configuration file <
           modules = [ ./home-manager/x270/home.nix unstable-overlays ];
+        };
+        
+        "jj@snowy" = home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          # `inherit` is used to pass the variables set in the above "let" statement into our home.nix file below
+          extraSpecialArgs = { inherit inputs outputs; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/snowy/home.nix unstable-overlays ];
         };
       };
     };
