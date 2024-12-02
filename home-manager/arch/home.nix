@@ -1,12 +1,21 @@
 { config, pkgs, ... }:
-
-{
+let 
+  homeDir = "/home/jj";
+in {
   home.username = "jj";
-  home.homeDirectory = "/home/jj";
+  home.homeDirectory = homeDir;
 
   imports = [
+    <sops-nix/modules/home-manager/sops.nix>
     ../packages/tmux/tmux.nix
+    ./pvpn.nix
   ];
+
+  sops = {
+    age.keyFile = "${homeDir}/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets.yaml;
+  };
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
