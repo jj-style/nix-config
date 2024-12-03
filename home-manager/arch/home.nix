@@ -7,8 +7,9 @@ in {
 
   imports = [
     <sops-nix/modules/home-manager/sops.nix>
-    ../packages/tmux/tmux.nix
     ./pvpn.nix
+    ../packages/tmux/tmux.nix
+    ../packages/git/git.nix
   ];
 
   sops = {
@@ -54,6 +55,10 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".Xresources".source = ../dotfiles/Xresources;
+    ".Xdefaults".source = ../dotfiles/Xresources;
+    ".inputrc".source = ../dotfiles/inputrc;
   };
 
   # Home Manager can also manage your environment variables through
