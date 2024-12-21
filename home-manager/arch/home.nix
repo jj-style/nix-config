@@ -10,6 +10,11 @@ in {
     ./pvpn.nix
     ../packages/tmux/tmux.nix
     ../packages/git/git.nix
+    ../packages/tree/tree.nix
+    ../packages/just/just.nix
+    ../packages/starship/starship.nix
+    ../packages/direnv/direnv.nix
+    ../packages/ranger/ranger.nix
   ];
 
   sops = {
@@ -27,7 +32,7 @@ in {
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  home.packages = [
+  home.packages = with pkgs; [
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -40,6 +45,14 @@ in {
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    fd
+    ripgrep
+    bat
+    duf
+    dua
+    jq
+    tealdeer
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,6 +92,9 @@ in {
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    EDITOR = "vim";
+    WWW_HOME = "https://html.duckduckgo.com/html/";
+    PAGER = "less";
   };
 
   # Let Home Manager install and manage itself.
