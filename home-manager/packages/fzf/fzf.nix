@@ -10,6 +10,6 @@
   };
 
   home.sessionVariables = {
-    FZF_DEFAULT_COMMAND='rg --files'
+    FZF_DEFAULT_COMMAND = "rg --files";
   };
 }

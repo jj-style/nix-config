@@ -15,6 +15,7 @@ in {
     ../packages/starship/starship.nix
     ../packages/direnv/direnv.nix
     ../packages/ranger/ranger.nix
+    ../packages/fzf/fzf.nix
   ];
 
   sops = {
@@ -94,7 +95,7 @@ in {
     # EDITOR = "emacs";
     EDITOR = "vim";
     WWW_HOME = "https://html.duckduckgo.com/html/";
-    PAGER = "less";
+    PAGER = "bat";
   };
 
   # Let Home Manager install and manage itself.
