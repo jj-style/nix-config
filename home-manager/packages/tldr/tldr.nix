@@ -5,4 +5,7 @@
   home.file = {
     ".config/tealdeer/config.toml".source = ./config.toml;
   };
+  home.shellAliases = {
+    t = "tldr";
+  };
 }

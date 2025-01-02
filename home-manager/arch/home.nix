@@ -7,6 +7,7 @@ in {
 
   imports = [
     <sops-nix/modules/home-manager/sops.nix>
+    ../packages/bash/bash.nix
     ../packages/tmux/tmux.nix
     ../packages/git/git.nix
     ../packages/tree/tree.nix
@@ -100,6 +101,11 @@ in {
     WWW_HOME = "https://html.duckduckgo.com/html/";
     PAGER = "bat";
   };
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/go/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
