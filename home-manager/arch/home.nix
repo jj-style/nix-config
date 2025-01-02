@@ -7,7 +7,6 @@ in {
 
   imports = [
     <sops-nix/modules/home-manager/sops.nix>
-    ./pvpn.nix
     ../packages/tmux/tmux.nix
     ../packages/git/git.nix
     ../packages/tree/tree.nix
@@ -16,6 +15,11 @@ in {
     ../packages/direnv/direnv.nix
     ../packages/ranger/ranger.nix
     ../packages/fzf/fzf.nix
+    ../packages/htop/htop.nix
+    ../packages/zenith/zenith.nix
+    ../packages/tldr/tldr.nix
+    # using wireguard config until protonvpn sort themselves out on linux
+    # ./pvpn.nix
   ];
 
   sops = {
@@ -53,7 +57,6 @@ in {
     duf
     dua
     jq
-    tealdeer
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
