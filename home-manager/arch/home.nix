@@ -58,6 +58,7 @@ in {
     duf
     dua
     jq
+    sftpman
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -101,11 +102,39 @@ in {
     WWW_HOME = "https://html.duckduckgo.com/html/";
     PAGER = "bat";
   };
+  
   home.sessionPath = [
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
     "$HOME/go/bin"
   ];
+  
+  home.shellAliases = {
+    home = "cd ~";
+    
+    dcu = "docker compose up -d";
+    dcd = "docker compose down";
+
+    ga = "git add .";
+		gb = "git branch";
+		gc = "git commit -m";
+		gcl = "git clone";
+		gmg = "git merge";
+		gcm = "git checkout master";
+		gco = "git checkout";
+		gcb = "git checkout -b";
+		gd = "git diff";
+		gf = "git fetch";
+		gi = "git init";
+		gl = "git log --pretty --oneline --abbrev-commit --graph --color";
+		gp = "git push origin \$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)";
+		gpl = "git pull";
+		gss = "git status";
+		gx = "git add . && git commit -m";
+		prune = "git branch --merged master | grep -v master | xargs -n 1 git branch -d";
+		stash = "git stash";
+		pop = "git stash pop";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
