@@ -19,6 +19,7 @@ in {
     ../packages/htop/htop.nix
     ../packages/zenith/zenith.nix
     ../packages/tldr/tldr.nix
+    ../packages/sway/sway.nix
     # using wireguard config until protonvpn sort themselves out on linux
     # ./pvpn.nix
   ];
