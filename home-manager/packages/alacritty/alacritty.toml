@@ -1,3 +1,4 @@
+[general]
 import = ["/home/jj/.nix-profile/monokai_charcoal.yaml"]
 
 [font]

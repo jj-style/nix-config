@@ -16,3 +16,7 @@ creation_rules:
     - age:
       - *jj_arch
       - *snowy
+  - path_regex: ^.*arch/secrets.yaml$
+    key_groups:
+    - age:
+      - *jj_arch

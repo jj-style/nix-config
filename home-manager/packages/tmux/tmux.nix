@@ -38,11 +38,26 @@ in {
     ];
     shortcut = "a";
     extraConfig = ''
+      # remove pre-bound shortcuts
+      # unbind-key -T copy-mode -a
+      # unbind-key -T copy-mode-vi -a
+      # unbind-key -T prefix -a
+      unbind-key -T root -a
+
       # sane split commands
       bind | split-window -h
       bind - split-window -v
       unbind '"'
       unbind %
+
+      # Mouse works as expected
+      set-option -g mouse on
+
+      # moving between windows with vim movements
+      bind -r h select-pane -L
+      bind -r j select-pane -D
+      bind -r k select-pane -U
+      bind -r l select-pane -R
 
       # moving between windows with vim movement keys
       bind -r C-h select-window -t :-
@@ -53,6 +68,11 @@ in {
       bind -r J resize-pane -D 5
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
+      
+      # move windows left/right with Crl-j/k 
+      bind -r C-j swap-window -t -1\; select-window -t -1
+      bind -r C-k swap-window -t +1\; select-window -t +1
+
     '';
   };
 }
