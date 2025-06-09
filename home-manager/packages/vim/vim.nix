@@ -55,6 +55,9 @@
       " nerdtree
       nnoremap <leader>nt :NERDTreeToggle<CR>
       nnoremap <leader>ntf :NERDTreeFind<CR>
+
+      " transparent
+      autocmd vimenter * ++nested hi Normal guibg=NONE ctermbg=NONE
     '';
   };
 }
