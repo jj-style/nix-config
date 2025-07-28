@@ -69,6 +69,8 @@ input * {
 input type:touchpad {
     tap enabled
     natural_scroll enabled
+    # https://bbs.archlinux.org/viewtopic.php?id=306566
+    drag_lock disabled
 }
 
 #
