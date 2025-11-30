@@ -76,8 +76,8 @@ in {
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    ".Xresources".source = ../dotfiles/Xresources;
-    ".Xdefaults".source = ../dotfiles/Xresources;
+    #".Xresources".source = ../dotfiles/Xresources;
+    #".Xdefaults".source = ../dotfiles/Xresources;
     ".inputrc".source = ../dotfiles/inputrc;
   };
 
