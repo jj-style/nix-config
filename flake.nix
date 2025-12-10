@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
@@ -35,6 +35,9 @@
         ];
       };
     in {
+    
+      # TODO: add function here so can call mkSystem ./x270/configuration.nix "hostname"
+
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
@@ -54,6 +57,15 @@
           # > Our main nixos configuration file <
           modules =
             [ ./system/snowy/configuration.nix sops-nix.nixosModules.sops ];
+        };
+
+        # wilson thinkserver x270
+        wilson = nixpkgs.lib.nixosSystem {
+          # `inherit` is used to pass the variables set in the above "let" statement into our configuration.nix file below
+          specialArgs = { inherit inputs outputs timeZone locale; hostName = "wilson"; };
+          # > Our main nixos configuration file <
+          modules =
+            [ ./system/common/core ./system/wilson/configuration.nix sops-nix.nixosModules.sops ];
         };
       };
 

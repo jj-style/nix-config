@@ -20,3 +20,7 @@ creation_rules:
     key_groups:
     - age:
       - *jj_arch
+  - path_regex: ^secrets/wilson.yaml$
+    key_groups:
+    - age:
+        - *jj_arch
