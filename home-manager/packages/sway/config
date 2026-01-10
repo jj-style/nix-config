@@ -340,6 +340,7 @@ bindgesture swipe:left workspace prev
 #for_window [class="Spotify"] move --no-auto-back-and-forth container to workspace 10
 assign [class="Spotify"]  10
 assign [app_id="org.jellyfin.jellyfinmediaplayer"]  10
+assign [app_id="libresheet"] 10
 for_window [title="Preferences$"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
