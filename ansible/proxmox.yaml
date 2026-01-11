@@ -34,6 +34,11 @@
         dest: /etc/modprobe.d/vfio.conf
         mode: '0644'
       notify: update-initramfs
+
+    - name: Turn off subscription warning
+      include_role:
+        name: ansible-role-pve-no-subscription
+
   handlers:
     - name: update-grub
       command: update-grub
