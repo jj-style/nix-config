@@ -125,10 +125,15 @@ in {
   users = {
     mutableUsers = false;
     users.jj = {
+      uid = 1000;
       isNormalUser = true;
+      group = "jj";
       extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [ ];
       hashedPasswordFile = "${config.sops.secrets.passwd.path}";
+    };
+    groups.jj = {
+      gid = 1000;
     };
   };
 
