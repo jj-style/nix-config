@@ -226,6 +226,7 @@ in {
     enable = true;
     openFirewall = true;
     authKeyFile = "${config.sops.secrets."tailscale_authkey".path}";
+    useRoutingFeatures = "client";
     extraUpFlags = ["--ssh" "--advertise-exit-node --accept-dns=false"];
   };
 
