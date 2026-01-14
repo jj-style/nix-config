@@ -226,7 +226,7 @@ in {
     enable = true;
     openFirewall = true;
     authKeyFile = "${config.sops.secrets."tailscale_authkey".path}";
-    extraUpFlags = ["--ssh" "--advertise-exit-node"];
+    extraUpFlags = ["--ssh" "--advertise-exit-node --accept-dns=false"];
   };
 
   services.smartd = {
