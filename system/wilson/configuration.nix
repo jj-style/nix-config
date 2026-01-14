@@ -136,7 +136,7 @@ in {
       extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [ ];
       hashedPasswordFile = "${config.sops.secrets.passwd.path}";
-      openssh.authorizedKeys = [
+      openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbSlq8bAJnWIC/b8H58ZeTPdgFwdBp9uV8Mp4ZqrLF5"
       ];
     };
