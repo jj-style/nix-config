@@ -8,16 +8,16 @@ in {
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
     # TODO(jj): add in
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ../common/nix/mynix.nix
   ];
 
   # TODO(jj): remove when hardware config in
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/3877c830-c42b-4ef4-a622-308f5ca315b3";
-    fsType = "ext4";
-  };
+  # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  # fileSystems."/" = {
+  #   device = "/dev/disk/by-uuid/3877c830-c42b-4ef4-a622-308f5ca315b3";
+  #   fsType = "ext4";
+  # };
 
   nixpkgs = {
     overlays = [
@@ -75,12 +75,12 @@ in {
     };
 
     "/mnt/disk1" = {
-        device = "/dev/disk/by-id/wwn-0x5000c5006749ae4f-part1";
+        device = "/dev/disk/by-uuid/2421d40c-9782-43de-a18a-c7a5d0192d14";
         fsType = "ext4";
     };
 
     "/mnt/parity1" = {
-        device = "/dev/disk/by-id/wwn-0x50014ee2613dbe76-part1";
+        device = "/dev/disk/by-uuid/7c4e277c-2bb7-4166-a2e3-07916032ce0e";
         fsType = "xfs";
     };
   };
