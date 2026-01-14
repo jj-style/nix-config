@@ -61,7 +61,6 @@ in {
     # # fonts?
     fontconfig
     powerline-fonts
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -73,6 +72,10 @@ in {
 
   # required to autoload fonts from packages installed via Home Manager
   fonts.fontconfig.enable = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
