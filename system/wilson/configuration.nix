@@ -178,6 +178,15 @@ in {
     443
     # syncthing
     22000
+    # jellyfin
+    8096
+    # etesync
+    3735
+    3736
+    # mealie
+    42437
+    # hedgedoc
+    3200
   ];
   networking.firewall.allowedUDPPorts = [
     # wireguard
