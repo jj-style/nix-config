@@ -72,10 +72,6 @@ in {
 
   # required to autoload fonts from packages installed via Home Manager
   fonts.fontconfig.enable = true;
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

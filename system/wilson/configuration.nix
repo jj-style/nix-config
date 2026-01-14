@@ -102,6 +102,11 @@ in {
     xfsprogs
   ];
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+  ];
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "gb";
