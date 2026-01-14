@@ -172,8 +172,21 @@ in {
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedTCPPorts = [ 
+    22
+    80
+    443
+    # syncthing
+    22000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    # wireguard
+    51820
+    # syncthing
+    22000
+    # syncthing
+    21027
+  ];
   networking.firewall.trustedInterfaces = [ "tailscale0" "wg0" ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
