@@ -192,6 +192,9 @@ in {
     42437
     # hedgedoc
     3200
+    # hass voice
+    10200
+    10300
   ];
   networking.firewall.allowedUDPPorts = [
     # wireguard
