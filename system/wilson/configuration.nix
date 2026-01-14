@@ -165,7 +165,10 @@ in {
   # ========== NETWORK ========== #
   networking.hostName = hostName; # Define your hostname.
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+  };
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Open ports in the firewall.
@@ -200,6 +203,11 @@ in {
     Endpoint = ${config.sops.placeholder."wireguard/server/endpoint"}
     PersistentKeepAlive = 25
   '';
+
+  services.resolved = {
+    enable = true;
+    fallbackDns = ["9.9.9.9"];
+  };
 
   virtualisation.docker = {
     enable = true;
