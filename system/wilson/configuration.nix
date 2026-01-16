@@ -10,6 +10,7 @@ in {
     # TODO(jj): add in
     ./hardware-configuration.nix
     ../common/nix/mynix.nix
+    ./services
   ];
 
   # TODO(jj): remove when hardware config in
@@ -301,7 +302,7 @@ in {
             target_preserve =  "20d 10w *m";
             snapshot_dir = ".snapshots";
             volume."/mnt/tank" = {
-                target = "ssh://snowy/mnt/backups";
+                target = "ssh://100.118.105.116/mnt/backups";
                 subvolume = {
                     "fuse" = {};
                     "documents" = {};

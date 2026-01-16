@@ -118,7 +118,10 @@ in {
   #
   #  /etc/profiles/per-user/jj/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "vim"; };
+  home.sessionVariables = {
+    EDITOR = "vim";
+    PAGE = "bat";
+  };
 
   # Set shell aliases
   home.shellAliases = {

@@ -5,12 +5,19 @@
     go
     gopls
     gotools
+    golangci-lint
+    golangci-lint-langserver
+    delve
     nodejs
     python312
     python312Packages.jedi
     python312Packages.jedi-language-server
     pre-commit
     convco
+    helm-ls
+    dockerfile-language-server
+    docker-compose-language-server
+    yaml-language-server
   ];
 
   programs.bash.initExtra = ''
@@ -19,7 +26,24 @@
 
   # host/home specific program config
   programs.vim = {
-    plugins = with pkgs.vimPlugins; [ vim-go coc-nvim coc-go jedi-vim ];
+    plugins = with pkgs.vimPlugins; [
+      vim-go
+      coc-nvim
+      coc-go
+      jedi-vim
+      coc-tsserver
+      coc-docker
+      coc-eslint
+      coc-eslint
+      coc-vimlsp
+      coc-json
+      coc-html
+      coc-html
+      coc-yaml
+      coc-sh
+      vim-tmux-clipboard
+      vim-tmux-navigator
+    ];
     extraConfig = ''
       ${(builtins.readFile ./vim/plug-config/vim-go.vim)}
       ${(builtins.readFile ./vim/plug-config/coc.vim)}
