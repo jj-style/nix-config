@@ -3,6 +3,7 @@
 {
 
   sops.secrets."homepage/env" = {};
+  sops.secrets."homepage/it-tools-url" = {};
 
   services.homepage-dashboard = {
     enable = true;
@@ -104,4 +105,20 @@
   };
 
   systemd.services.homepage-dashboard.serviceConfig.Group = "docker";
+
+  sops.templates."homepage-services.yaml" = {
+    content = ''
+      - Tools:
+        - it-tools:
+            href: "${config.sops.placeholder."homepage/it-tools-url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/it-tools-url"}"
+            description: IT tools
+            icon: sh-it-tools
+    '';
+    #owner = config.systemd.services.homepage-dashboard.serviceConfig.User;
+    mode = "0440";
+    group = "docker";
+  };
+
+  environment.etc."homepage-dashboard/services.yaml".source = lib.mkForce "${config.sops.templates."homepage-services.yaml".path}";
 }
