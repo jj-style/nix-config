@@ -9,6 +9,13 @@
       vim-lastplace
       nerdcommenter
       nerdtree
+      #gruvbox
+      emmet-vim
+      ultisnips
+      vim-gitgutter
+      vim-surround
+      vim-test
+      vim-easy-align
     ];
     settings = {
       ignorecase = true;
@@ -54,10 +61,23 @@
 
       " nerdtree
       nnoremap <leader>nt :NERDTreeToggle<CR>
+      nnoremap <silent> <C-t> :NERDTreeToggle %<CR>
       nnoremap <leader>ntf :NERDTreeFind<CR>
 
       " transparent
       autocmd vimenter * ++nested hi Normal guibg=NONE ctermbg=NONE
+
+      " set cwd when open file
+      " https://superuser.com/a/195191
+      " autocmd BufEnter * lcd %:p:h
+
+      " colorscheme gruvbox
+      " set background=dark
+
+      " 80 char guide
+      set colorcolumn=80
+
+      let g:UltiSnipsExpandTrigger = "<nop>"
     '';
   };
 }

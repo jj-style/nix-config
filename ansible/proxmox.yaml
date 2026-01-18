@@ -1,0 +1,47 @@
+- name: proxmox configuration
+  hosts: proxmox
+  tasks:
+    - name: Mount VM storage drive
+      ansible.posix.mount:
+        path: /mnt/pve-data
+        src: "{{external_disk}}"
+        fstype: ext4
+        opts: noatime
+        state: present
+
+    - name: Blacklist the graphics driver module
+      community.general.kernel_blacklist:
+        name: "{{item}}"
+        state: present
+      loop:
+        - nvidia
+        - nvidiafb
+        - nouveau
+
+    # https://stackoverflow.com/questions/55844981/ansible-insert-word-in-grub-cmdline
+    - name: Enable IOMMU
+      ansible.builtin.lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="((?:(?!intel_iommu=on).)*?)"$'
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on iommut=pt"'
+        backup: true
+        backrefs: true
+      notify: update-grub
+
+    - name: Bind devices to VFIO
+      ansible.builtin.template:
+        src: vfio.conf.j2
+        dest: /etc/modprobe.d/vfio.conf
+        mode: '0644'
+      notify: update-initramfs
+
+    - name: Turn off subscription warning
+      include_role:
+        name: ansible-role-pve-no-subscription
+
+  handlers:
+    - name: update-grub
+      command: update-grub
+
+    - name: update-initramfs
+      command: update-initramfs -u -k all

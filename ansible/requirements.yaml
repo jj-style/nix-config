@@ -1,0 +1,3 @@
+roles:
+  - src: git+https://github.com/lukaskaplan/ansible-role-pve-no-subscription.git
+  - src: artis3n.tailscale

@@ -7,7 +7,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Sops
@@ -35,6 +35,9 @@
         ];
       };
     in {
+    
+      # TODO: add function here so can call mkSystem ./x270/configuration.nix "hostname"
+
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
@@ -54,6 +57,15 @@
           # > Our main nixos configuration file <
           modules =
             [ ./system/snowy/configuration.nix sops-nix.nixosModules.sops ];
+        };
+
+        # wilson thinkserver x270
+        wilson = nixpkgs.lib.nixosSystem {
+          # `inherit` is used to pass the variables set in the above "let" statement into our configuration.nix file below
+          specialArgs = { inherit inputs outputs timeZone locale; hostName = "wilson"; };
+          # > Our main nixos configuration file <
+          modules =
+            [ ./system/common/core ./system/wilson/configuration.nix sops-nix.nixosModules.sops ];
         };
       };
 
@@ -76,6 +88,15 @@
           extraSpecialArgs = { inherit inputs outputs; };
           # > Our main home-manager configuration file <
           modules = [ ./home-manager/snowy/home.nix unstable-overlays ];
+        };
+
+        "jj@wilson" = home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          # `inherit` is used to pass the variables set in the above "let" statement into our home.nix file below
+          extraSpecialArgs = { inherit inputs outputs; };
+          # > Our main home-manager configuration file <
+          modules = [ ./home-manager/wilson/home.nix unstable-overlays ];
         };
       };
     };

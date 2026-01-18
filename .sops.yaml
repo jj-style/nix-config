@@ -5,6 +5,7 @@ keys:
   systems:
     - &nixos age1qlvrrh5rg9ys79z9tq0fjgm3r9km8hzvt65mj8qa27ezzqaeqpxq5qd0f6
     - &snowy age1ql28mv4vcsux4hv3gmg593srznzk4y8lvcj8xac23eaqvaz47dmqqhcf38
+    - &wilson age1qaq9q365zwszqtrq72j7e0g59jskrh3a3673hah0x3qac3acsuqsc0n7ej
 creation_rules:
   - path_regex: ^.*x270/secrets/secrets\.(yaml|json|env|ini)$
     key_groups:
@@ -20,3 +21,8 @@ creation_rules:
     key_groups:
     - age:
       - *jj_arch
+  - path_regex: ^secrets/wilson.yaml$
+    key_groups:
+    - age:
+        - *jj_arch
+        - *wilson

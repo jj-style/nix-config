@@ -4,6 +4,7 @@
     gum
     convco
     gitui
+    delta
   ];
 
   sops = {
@@ -23,26 +24,31 @@
   programs.git = {
     enable = true;
     includes = [{path="${config.sops.templates."git_user_config_ini".path}";}];
-    delta = {
-      enable = true;
-      options = {
-        # use n and N to move between diff sections
-        navigate = true;
-        # or light = true, or omit for auto-detection
-        dark = true;
+    ignores = [ "*~" "*.swp" ];
+    settings = {
+      aliases = {
+        cc = "cc = !convco commit";
+        co = "!git checkout $(git branch | gum filter --placeholder \"branch...\")";
+        gadd = "!git add $(git ls-files -m --others --exclude-standard | gum choose --no-limit)";
+        curr = "!git rev-parse --abbrev-ref HEAD";
+        prunelist = "!git branch -vv | grep 'gone]' | awk '{print $1}'";
+      };
+      url = {
+        "ssh://aur@aur.archlinux.org" = {
+          insteadOf = "https://aur.archlinux.org";
+        };
       };
     };
-    ignores = [ "*~" "*.swp" ];
-    aliases = {
-      cc = "cc = !convco commit";
-      co = "!git checkout $(git branch | gum filter -- placeholder \"branch...\")";
-      gadd = "!git add $(git ls-files -m --others --exclude-standard | gum choose --no-limit)";
-      curr = "!git rev-parse --abbrev-ref HEAD";
-      prunelist = "!git branch -vv | grep 'gone]' | awk '{print $1}'";
-    };
-    extraConfig = {
-      init = { defaultBranch = "master"; };
-      url."ssh://aur@aur.archlinux.org".insteadOf = "https://aur.archlinux.org";
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      # use n and N to move between diff sections
+      navigate = true;
+      # or light = true, or omit for auto-detection
+      dark = true;
     };
   };
 }

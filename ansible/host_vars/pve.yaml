@@ -1,0 +1,3 @@
+external_disk: /dev/disk/by-id/wwn-0x5002538e40b7719a-part1
+gpu_id: 10de:1cb1
+audio_id: 10de:0fb9
