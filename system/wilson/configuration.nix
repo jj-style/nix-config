@@ -9,6 +9,7 @@ in {
     # Import your generated (nixos-generate-config) hardware configuration
     # TODO(jj): add in
     ./hardware-configuration.nix
+    ./nvidia.nix
     ../common/nix/mynix.nix
     ./services
   ];
@@ -134,7 +135,7 @@ in {
       uid = 1000;
       isNormalUser = true;
       group = "jj";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
       packages = with pkgs; [ ];
       hashedPasswordFile = "${config.sops.secrets.passwd.path}";
       openssh.authorizedKeys.keys = [
@@ -173,6 +174,7 @@ in {
       "wireguard/private" = {};
       "wireguard/server/public" = {};
       "wireguard/server/endpoint" = {};
+      "healthchecks.io/btrbk" = {owner="btrbk"; group="btrbk";};
     };
   };
 
@@ -289,13 +291,12 @@ in {
   services.btrfs.autoScrub.enable = true;
   services.btrfs.autoScrub.interval = "monthly";
 
-  # TODO - curl healthcheck after btrbk
   services.btrbk = {
     # https://nixos.wiki/wiki/Btrbk
     instances."tank" = {
         onCalendar = "daily";
         settings = {
-            stream_compress = "lz4";
+            stream_compress = "xz";
             snapshot_preserve_min = "1w";
             snapshot_preserve = "2w";
             target_preserve_min = "no";
@@ -310,7 +311,9 @@ in {
             };
         };
     };
+    extraPackages = [ pkgs.xz ];
   };
+  systemd.services.btrbk-tank.serviceConfig.ExecStartPost = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.sops.secrets."healthchecks.io/btrbk".path})'";
   #TODO: not sure this is needed??
   #systemd.tmpfiles.rules = [
     #"d /mnt/tank/.snapshots 0755 root root"
