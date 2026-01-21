@@ -20,6 +20,7 @@
     let
       inherit (self) outputs;
 
+      system = "x86_64-linux";
       timeZone = "Europe/London";
       locale = "en_GB.UTF-8";
       unstable-overlays = {
@@ -99,5 +100,11 @@
           modules = [ ./home-manager/wilson/home.nix unstable-overlays ];
         };
       };
+
+      devShells."${system}".default = let
+        pkgs = import nixpkgs { inherit system; };
+        in pkgs.mkShell {
+          packages = with pkgs; [];
+        };
     };
 }

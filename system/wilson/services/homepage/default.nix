@@ -4,6 +4,7 @@
 
   sops.secrets."homepage/env" = {};
   sops.secrets."homepage/it-tools-url" = {};
+  sops.secrets."homepage/open-webui-url" = {};
 
   services.homepage-dashboard = {
     enable = true;
@@ -114,6 +115,11 @@
             siteMonitor: "${config.sops.placeholder."homepage/it-tools-url"}"
             description: IT tools
             icon: sh-it-tools
+        - open-webui:
+            href: "${config.sops.placeholder."homepage/open-webui-url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/open-webui-url"}"
+            description: Open WebUI
+            icon: sh-open-webui
     '';
     #owner = config.systemd.services.homepage-dashboard.serviceConfig.User;
     mode = "0440";

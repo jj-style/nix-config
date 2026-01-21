@@ -132,6 +132,22 @@ in {
     flac2mp3 = "fd . -e flac -x ffmpeg -i {} -ab 320k -map_metadata 0 -id3v2_version 3 {.}.mp3";
   };
 
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    defaultCacheTtlSsh = 1800;
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry-gnome3;
+  };
+
+  programs.gpg = {
+    enable = true;  # Enable GnuPG
+    homedir = "${homeDirectory}/.gnupg";  # Set the directory for GnuPG
+    mutableKeys = true;  # Allow managing keys
+    mutableTrust = true;  # Allow managing trust
+  };
+
+
   # Enable home-manager
   programs = { home-manager.enable = true; };
 

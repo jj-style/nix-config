@@ -147,6 +147,11 @@ in {
     };
   };
 
+
+  security.pki.certificateFiles = [
+    ./certs/homelab.crt
+    ./certs/homelab.int.crt
+  ];
   security.sudo = {
     enable = true;
     extraRules = [{
