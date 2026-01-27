@@ -16,6 +16,7 @@ in {
     inputs.sops-nix.homeManagerModules.sops
 
     ../packages/cli.nix
+    ../packages/abcde
   ];
 
   nixpkgs = {
