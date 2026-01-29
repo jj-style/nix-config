@@ -135,7 +135,7 @@ in {
       uid = 1000;
       isNormalUser = true;
       group = "jj";
-      extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "video" "cdrom" ];
       packages = with pkgs; [ ];
       hashedPasswordFile = "${config.sops.secrets.passwd.path}";
       openssh.authorizedKeys.keys = [
