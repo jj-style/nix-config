@@ -104,7 +104,7 @@
       devShells."${system}".default = let
         pkgs = import nixpkgs { inherit system; };
         in pkgs.mkShell {
-          packages = with pkgs; [];
+          packages = with pkgs; [git-crypt];
         };
     };
 }
