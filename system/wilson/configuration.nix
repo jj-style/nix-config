@@ -211,8 +211,6 @@ in {
     # hass voice
     10200
     10300
-    # immich
-    2283
   ];
   networking.firewall.allowedUDPPorts = [
     # wireguard
