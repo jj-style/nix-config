@@ -7,19 +7,11 @@ in {
   # You can import other NixOS modules here
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
-    # TODO(jj): add in
     ./hardware-configuration.nix
     ./nvidia.nix
     ../common/nix/mynix.nix
     ./services
   ];
-
-  # TODO(jj): remove when hardware config in
-  # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  # fileSystems."/" = {
-  #   device = "/dev/disk/by-uuid/3877c830-c42b-4ef4-a622-308f5ca315b3";
-  #   fsType = "ext4";
-  # };
 
   nixpkgs = {
     overlays = [
@@ -180,6 +172,7 @@ in {
       "wireguard/server/public" = {};
       "wireguard/server/endpoint" = {};
       "healthchecks.io/btrbk" = {owner="btrbk"; group="btrbk";};
+      "healthchecks.io/snapraid" = {};
     };
   };
 
@@ -399,6 +392,9 @@ in {
 
     };
   };
+  systemd.services.snapraid-sync.serviceConfig.ExecStartPost = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.sops.secrets."healthchecks.io/snapraid".path})'";
+  # the systemd service is hardened to prevent any address families. allow ipv4 for healthcheck
+  systemd.services.snapraid-sync.serviceConfig.RestrictAddressFamilies = lib.mkForce "AF_INET";
 
   services.minidlna = {
     enable = true;
