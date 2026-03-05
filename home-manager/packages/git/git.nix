@@ -23,6 +23,7 @@
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     includes = [{path="${config.sops.templates."git_user_config_ini".path}";}];
     ignores = [ "*~" "*.swp" ];
     settings = {
