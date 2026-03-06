@@ -5,6 +5,7 @@
   sops.secrets."homepage/env" = {};
   sops.secrets."homepage/it-tools-url" = {};
   sops.secrets."homepage/open-webui-url" = {};
+  sops.secrets."homepage/microbin-url" = {};
 
   services.homepage-dashboard = {
     enable = true;
@@ -120,6 +121,11 @@
             siteMonitor: "${config.sops.placeholder."homepage/open-webui-url"}"
             description: Open WebUI
             icon: sh-open-webui
+        - microbin:
+            href: "${config.sops.placeholder."homepage/microbin-url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/microbin-url"}"
+            description: pastebin
+            icon: sh-microbin
     '';
     #owner = config.systemd.services.homepage-dashboard.serviceConfig.User;
     mode = "0440";

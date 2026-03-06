@@ -3,5 +3,6 @@
   imports = [
     ./homepage
     ./open-webui
+    ./microbin
   ];
 }

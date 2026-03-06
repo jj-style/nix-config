@@ -137,6 +137,7 @@ in {
     groups.jj = {
       gid = 1000;
     };
+    groups.app-data = {};
   };
 
 
@@ -307,6 +308,7 @@ in {
                 subvolume = {
                     "fuse" = {};
                     "documents" = {};
+                    "app-data" = {};
                 };
             };
         };
