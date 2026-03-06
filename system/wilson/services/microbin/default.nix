@@ -26,5 +26,15 @@
     };
     passwordFile = "${config.sops.secrets."microbin/env".path}";
   };
-  systemd.services.microbin.serviceConfig.SupplementaryGroups = [ "app-data" ];
+
+  systemd.services.microbin.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = "${config.users.users.microbin.name}";
+    Group = "${config.users.groups.microbin.name}";
+  };
+  users.users.microbin = {
+    group = "microbin";
+    isSystemUser = true;
+  };
+  users.groups.microbin = { };
 }
