@@ -6,6 +6,8 @@
   sops.secrets."homepage/it-tools-url" = {};
   sops.secrets."homepage/open-webui-url" = {};
   sops.secrets."homepage/microbin-url" = {};
+  sops.secrets."homepage/pihole/url" = {};
+  sops.secrets."homepage/homeassistant/url" = {};
 
   services.homepage-dashboard = {
     enable = true;
@@ -126,6 +128,18 @@
             siteMonitor: "${config.sops.placeholder."homepage/microbin-url"}"
             description: pastebin
             icon: sh-microbin
+      - Admin:
+        - pihole:
+            href: "${config.sops.placeholder."homepage/pihole/url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/pihole/url"}"
+            description: DNS and ad-blocking
+            icon: sh-pi-hole
+        - homeassistant:
+            href: "${config.sops.placeholder."homepage/homeassistant/url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/homeassistant/url"}"
+            description: Home Assistant
+            icon: sh-home-assistant
+            
     '';
     #owner = config.systemd.services.homepage-dashboard.serviceConfig.User;
     mode = "0440";
