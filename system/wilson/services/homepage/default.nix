@@ -6,6 +6,7 @@
   sops.secrets."homepage/it-tools-url" = {};
   sops.secrets."homepage/open-webui-url" = {};
   sops.secrets."homepage/microbin-url" = {};
+  sops.secrets."homepage/stirling-pdf-url" = {};
   sops.secrets."homepage/pihole/url" = {};
   sops.secrets."homepage/homeassistant/url" = {};
 
@@ -128,6 +129,11 @@
             siteMonitor: "${config.sops.placeholder."homepage/microbin-url"}"
             description: pastebin
             icon: sh-microbin
+        - stirling-pdf:
+            href: "${config.sops.placeholder."homepage/stirling-pdf-url"}"
+            siteMonitor: "${config.sops.placeholder."homepage/stirling-pdf-url"}"
+            description: PDF multi-tool app
+            icon: sh-stirling-pdf
       - Admin:
         - pihole:
             href: "${config.sops.placeholder."homepage/pihole/url"}"

@@ -66,7 +66,7 @@
           specialArgs = { inherit inputs outputs timeZone locale; hostName = "wilson"; };
           # > Our main nixos configuration file <
           modules =
-            [ ./system/common/core ./system/wilson/configuration.nix sops-nix.nixosModules.sops ];
+            [ ./system/common/core ./system/wilson/configuration.nix sops-nix.nixosModules.sops unstable-overlays ];
         };
       };
 

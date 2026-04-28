@@ -4,5 +4,6 @@
     ./homepage
     ./open-webui
     ./microbin
+    ./stirling-pdf
   ];
 }
