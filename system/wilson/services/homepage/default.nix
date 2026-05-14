@@ -4,7 +4,6 @@
 
   sops.secrets."homepage/env" = {};
   sops.secrets."homepage/it-tools-url" = {};
-  sops.secrets."homepage/open-webui-url" = {};
   sops.secrets."homepage/microbin-url" = {};
   sops.secrets."homepage/stirling-pdf-url" = {};
   sops.secrets."homepage/pihole/url" = {};
