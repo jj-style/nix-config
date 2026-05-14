@@ -119,11 +119,6 @@
             siteMonitor: "${config.sops.placeholder."homepage/it-tools-url"}"
             description: IT tools
             icon: sh-it-tools
-        - open-webui:
-            href: "${config.sops.placeholder."homepage/open-webui-url"}"
-            siteMonitor: "${config.sops.placeholder."homepage/open-webui-url"}"
-            description: Open WebUI
-            icon: sh-open-webui
         - microbin:
             href: "${config.sops.placeholder."homepage/microbin-url"}"
             siteMonitor: "${config.sops.placeholder."homepage/microbin-url"}"
