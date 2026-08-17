@@ -22,6 +22,7 @@ set $term alacritty
 set $menu wofi --allow-images --insensitive --show=drun --lines=5 --prompt=""
 
 ### Output configuration
+output eDP1 resolution 1920x1080 position 1920 0 
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
