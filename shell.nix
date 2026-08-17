@@ -4,7 +4,7 @@ pkgs.mkShell {
     just
     pre-commit
     fd
-    nixfmt-classic
+    nixfmt
   ];
   shellHook = ''
     just hooks

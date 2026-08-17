@@ -4,6 +4,7 @@
     enableCompletion = true;
     bashrcExtra = ''
       function dy { dig +noall +answer +additional "$1" @dns.toys; }
+      eval "$(devenv hook bash)"
     '';
   };
 }

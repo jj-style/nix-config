@@ -9,9 +9,9 @@
     golangci-lint-langserver
     delve
     nodejs
-    python312
-    python312Packages.jedi
-    python312Packages.jedi-language-server
+    #python314
+    #python314Packages.jedi
+    #python314Packages.jedi-language-server
     pre-commit
     convco
     helm-ls

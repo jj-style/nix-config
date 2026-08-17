@@ -21,5 +21,18 @@
         "^" = "goto_first_nonwhitespace"
         "$" = "goto_line_end"
     '';
+    languages = {
+      language-server.protobuf-language-server = {
+        command = "buf";
+        args = ["lsp" "serve"];
+      };
+      language = [
+        {
+          name = "protobuf";
+          file-types = ["proto"];
+          language-servers = [ "protobuf-language-server" ];
+        }
+      ];
+    };
   };
 }
