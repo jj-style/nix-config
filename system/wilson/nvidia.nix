@@ -16,8 +16,7 @@
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = false;
-    #package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
   hardware.nvidia-container-toolkit.enable = true;
