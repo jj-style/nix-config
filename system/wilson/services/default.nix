@@ -3,6 +3,5 @@
   imports = [
     ./homepage
     ./microbin
-    ./stirling-pdf
   ];
 }

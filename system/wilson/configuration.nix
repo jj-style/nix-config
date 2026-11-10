@@ -42,7 +42,8 @@ in {
   # ========== BOOT ========== #
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  #boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0";
   boot.loader.grub.useOSProber = true;
   boot.kernelParams = [ "quiet" "splash" "ipv6.disable=1" ];
   boot.kernel.sysctl = {
@@ -247,7 +248,7 @@ in {
 
   services.resolved = {
     enable = true;
-    fallbackDns = ["9.9.9.9"];
+    settings.Resolve.FallbackDNS = ["9.9.9.9"];
   };
 
   virtualisation.docker = {

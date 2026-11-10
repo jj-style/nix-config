@@ -28,10 +28,10 @@
           (final: prev: {
             unstable = nixpkgs-unstable.legacyPackages.${prev.system};
             # <-- use this variant instead if unfree packages are needed: -->
-            # unstable = import nixpkgs-unstable {
-            #   inherit system;
-            #   config.allowUnfree = true;
-            # };
+            #unstable = import nixpkgs-unstable {
+              #inherit system;
+              #config.allowUnfree = true;
+            #};
           })
         ];
       };
